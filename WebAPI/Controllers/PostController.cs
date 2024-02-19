@@ -28,7 +28,7 @@ namespace WebApplication1.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Index(PostVM vModel)
         {
-            PostVM result;
+            
             if (vModel.PageInfo == null)
             {
                 vModel.PageInfo = new PageInfo()
@@ -36,10 +36,10 @@ namespace WebApplication1.Areas.Admin.Controllers
                     Controller="Post"
                 };
             }
-            result = vModel;
+            
             vModel.PostList = _service.Index(vModel.PageInfo);
             vModel.PageSizeSelectList = new SelectList(vModel.PageInfo.PageSizeList);
-            return Ok(result);
+            return Ok(vModel);
         }
 
         // GET: PostController/Details/5
